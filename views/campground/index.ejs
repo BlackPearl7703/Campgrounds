@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1 class="text-center mb-5">All Campgrounds</h1>
+    <!-- <a href="/campgrounds/new"> <i>add a new camp</i></a> -->
+
+    <ul>
+       <% for(let c of camps){  %>
+          <div class="card mb-2 ">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<%=c.images[0].url%>" alt="" height="200px" class="image-fluid">
+                </div>
+                <div class="col-md-8 ">
+                   <div class="card-body">
+                    <h5 class="card-title">
+                    <%=c.title%>
+                    </h5>
+                    <p class="card-text">  <%=c.text%> </p>
+                    <p class="card-text">  
+                        <small class="text-muted"> <%=c.location%></small>
+                    </p>
+
+                    <a href="/campgrounds/<%=c.id%>" class="btn btn-primary">view <%=c.title%> </a>
+         <form action="/campgrounds/<%=c.id%>?_method=DELETE" method="POST">
+  
+                 <button class="btn btn-danger mt-3">delete camp</button>
+    
+               </form>
+                   </div>
+                </div>
+            </div>
+          </div>
+            
+     <%   }%>
+    </ul>
+
